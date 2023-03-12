@@ -1,13 +1,27 @@
 import React from 'react'
+import { Row, Col } from 'react-bootstrap';
 import Card from '../components/Card'
-import { useState } from 'react'
+import { useProductContext } from '../context/AppCtx'
 
 export default () => {
-  const [arr, setArr] = useState([1,2,3,4,5,6,7,8,9,10])
 
+  const {dummyProducts} = useProductContext();
+  
   return (
-    <div style={{display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', width: '80%', margin: '20px auto'}}>
-     {arr.map(el => (<Card key={el} />))}
-    </div>
+    <Row className="my-5">
+      {
+        dummyProducts.map((p) => {
+          return (
+        <Col key={p.product_name} xs={10} md={6} lg={4} xl={3} xxl={2} className="mx-auto">
+            <Card 
+                name={p.product_name}
+                desc={p.product_desc}
+                img={p.product_img}
+                price={p.product_price} />
+        </Col>
+          )
+        })
+      }
+    </Row>
   )
 }

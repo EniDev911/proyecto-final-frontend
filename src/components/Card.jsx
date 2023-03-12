@@ -1,14 +1,19 @@
 import React from 'react'
 import {Card} from 'react-bootstrap'
 
-export default () => {
+export default ({name, desc, img, price}) => {
   return (
-    <Card style={{width: '300px', borderRadius: '15px'}}>
+    <Card style={{ borderRadius: '15px'}}>
+      <Card.Header>
+        <Card.Img src={img} className="card-img-fluid"
+        style={{objectFit: 'cover', height:'220px'}}/>
+      </Card.Header>
       <Card.Body>
-
+        <h3 className="card-title">{name}</h3>
+        <p className='card-text'>{desc}</p> 
       </Card.Body>
       <Card.Footer style={{position: 'relative'}} className="bg-body d-flex justify-content-between align-items-center">
-        <div>$9.999</div>
+        <div><strong>$ {price}</strong></div>
         <div style ={{
           position: 'absolute',
           right: '0',
