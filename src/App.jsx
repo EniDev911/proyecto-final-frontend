@@ -12,6 +12,7 @@ function App() {
         <Header/>
         <Routes>
           <Route path="/" element={<Home />} index/>
+          <Route path="/login" element={<Login />} index/>
         </Routes>
       </AppCtx>
     </div>
