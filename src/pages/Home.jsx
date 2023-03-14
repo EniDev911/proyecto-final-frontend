@@ -1,13 +1,14 @@
 import React from 'react'
-import { Row, Col } from 'react-bootstrap';
+import { Row, Col, Container } from 'react-bootstrap';
 import Card from '../components/Card'
 import { useProductContext } from '../context/AppCtx'
 
 export default () => {
 
   const {dummyProducts} = useProductContext();
-  
+
   return (
+    <Container>
     <Row className="my-5">
       {
         dummyProducts.map((p) => {
@@ -23,5 +24,6 @@ export default () => {
         })
       }
     </Row>
+    </Container>
   )
 }

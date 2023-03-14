@@ -3,7 +3,7 @@ import {Card} from 'react-bootstrap'
 
 export default ({name, desc, img, price}) => {
   return (
-    <Card style={{ borderRadius: '15px'}}>
+    <Card style={{ borderRadius: '15px'}} className="shadow-sm">
       <Card.Header>
         <Card.Img src={img} className="card-img-fluid"
         style={{objectFit: 'cover', height:'220px'}}/>
