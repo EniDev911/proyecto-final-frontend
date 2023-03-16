@@ -9,7 +9,8 @@ export default () => {
           <Navbar.Toggle aria-controls="navbar-nav" className="ms-auto"/>
           <Navbar.Collapse id='navbar-nav'>
             <Nav className="ms-auto">
-              <Nav.Link as={Link} to="/">Inicio</Nav.Link>
+              <Nav.Link as={Link} to="/">Home</Nav.Link>
+              <Nav.Link as={Link} to="/login">Iniciar sesión</Nav.Link>
               <Nav.Link as={Link} to="/categorias">Categorías</Nav.Link>
             </Nav>
           </Navbar.Collapse>
