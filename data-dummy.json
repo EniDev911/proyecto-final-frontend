@@ -19,5 +19,12 @@
     "product_desc": "lorem ipsum dolor sit amet, consectetur adip lorem ipsum dolor sit amet, consectetur adip lorem ipsum dolor sit amet, consectetur adip",
     "product_price": 6000,
     "product_likes": 2
+  },
+    {
+    "product_img": "https://raw.githubusercontent.com/EniDev911/assets/main/png/plantas-png/planta-3.png",
+    "product_name": "Planta 4",
+    "product_desc": "lorem ipsum dolor sit amet, consectetur adip lorem ipsum dolor sit amet, consectetur adip lorem ipsum dolor sit amet, consectetur adip",
+    "product_price": 8000,
+    "product_likes": 2
   }
 ]
