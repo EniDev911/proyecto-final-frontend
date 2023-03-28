@@ -11,3 +11,9 @@
 .page {
   background-color: var(--white);
 }
+
+footer {
+  text-align: center;
+  padding: 1rem 0;
+  background-color: var(--secondary-color);
+}

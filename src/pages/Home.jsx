@@ -1,11 +1,11 @@
 import React from 'react'
 import { Row, Col, Container } from 'react-bootstrap';
 import Card from '../components/Card'
-import { useProductContext } from '../context/AppCtx'
+import { useAppContext } from '../context/AppCtx'
 
 export default () => {
 
-  const {dummyProducts} = useProductContext();
+  const {dummyProducts} = useAppContext();
 
   return (
     <Container>
