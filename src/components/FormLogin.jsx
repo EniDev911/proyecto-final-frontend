@@ -10,10 +10,10 @@ import Swal from "sweetalert2";
 export default () => {
   const MyModal = withReactContent(Swal);
   
-  const showMessage = (status) => {
+  const showMessage = (message, status) => {
     MyModal.fire({
-      title: "Exitoso",
-      icon: "success",
+      title: message,
+      icon: status,
       timer: 2000,
       timerProgressBar: true,
       showCloseButton:false,
@@ -33,7 +33,6 @@ export default () => {
 
   const sendForm = (ev) => {
     ev.preventDefault();
-    showMessage();
 
     const options = {
       method: "POST",
@@ -47,18 +46,25 @@ export default () => {
     axios
       .request(options)
       .then(function (res) {
+
+      if(res.status === 200) {
+        //handle success here
         localStorage.setItem("token", JSON.stringify(res.data));
         setToken(localStorage.getItem("token"));
+        showMessage("Autenticación exitosa", "success");
         navigate("/");
+      } else if(res.status === 401) {
+        showMessage("Email o contraseña incorrecta", "error");
+      }
       })
       .catch(function (error) {
         console.error(error);
+        showMessage("Email o contraseña incorrecta", "error");
       });
 
       setEmail("");
       setPassword("");
   };
-
   return (
     <Card
       className="shadow"

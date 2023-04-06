@@ -4,8 +4,6 @@ import { useNavigate } from 'react-router-dom';
 import { useAppContext } from '../context/AppCtx'
 import { formatValue } from '../helpers/format';
 
-
-
 export default ({id, name, desc, img, price}) => {
 
   const {increaseCartQuantity} = useAppContext();
