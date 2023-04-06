@@ -4,12 +4,11 @@ import { NavLink, Link } from 'react-router-dom';
 import { useAppContext } from '../context/AppCtx';
 import logo from "../assets/images/logo.png";
 
-
 export default () => {
 
   const setActive = ({ isActive }) => (isActive ? "active" : "noactive");
 
-  const {token, setToken} = useAppContext();
+  const {token, setToken, totalCart, cartItems} = useAppContext();
   return (
      <Navbar sticky='top' expand="lg" style={{background: '#9DC08B'}} className="shadow">
         <Container>
@@ -26,18 +25,24 @@ export default () => {
               <Nav.Link as={NavLink} to="/" end>Home</Nav.Link>
               {
                 token ? <>
-                <Nav.Link as={NavLink} to="/" onClick={
+                <Nav.Link as={Link} to="/" onClick={
                   () => {
                     setToken(localStorage.removeItem("token"));
                   }
                 }>Salir</Nav.Link>
+                <Nav.Link as={NavLink} to="/details-shopping">Mis compras</Nav.Link>
                 </>
                 : <>
                 <Nav.Link as={NavLink} to="/login">Iniciar sesión</Nav.Link>
                 <Nav.Link as={NavLink} to="/signup">Registrarse</Nav.Link>
                 </>
               }
-              <Nav.Link as={NavLink} to="/categorias">Categorías</Nav.Link>
+              <Nav.Link as={NavLink} to="/cart">Categorías</Nav.Link>
+              <Nav.Link as={Link} to="/cart">
+                <i class="fa-solid fa-cart-shopping fs-3"></i>
+                
+              </Nav.Link>{" "}
+               {/* <span>$ {totalCart(cartItems)}</span> */}
             </Nav>
           </Navbar.Collapse>
         </Container>

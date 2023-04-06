@@ -5,19 +5,12 @@ import Login from './pages/Signin';
 import AppCtx from './context/AppCtx';
 import Footer from './components/Footer';
 import Signup from './pages/Signup';
-import Details from './pages/Details';
-import { useEffect } from 'react';
+import Details from './pages/DetailsShopping';
+import Cart from './pages/Cart';
 
-import {getProduct} from "./api/ecommerceApi"
 
 function App() {
 
-  useEffect(() => {
-  const fetchProduct = async() => {
-      return await getProduct();
-  }
-    console.log(fetchProduct().then())
-  },[])
   return (
 
     <div className="App">
@@ -28,6 +21,8 @@ function App() {
           <Route path="/login" element={<Login />} index/>
           <Route path="/signup" element={<Signup />} />
           <Route path="/details/:id" element={<Details />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="*" element={<Home />} />
         </Routes>
         <Footer />
       </AppCtx>

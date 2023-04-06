@@ -17,6 +17,9 @@ export default ({children}) => {
   const [token, setToken] = useState("");
   const [cartItems, setCartItems] = useState();
   const [info, setInfo] = useState({});
+
+
+
   /**
    *
    * @param {string} id > identificador único para buscar en catálogo
@@ -25,20 +28,18 @@ export default ({children}) => {
   const getProduct = (id) => {
     const options = {
       method: 'GET',
-      url: 'https://ecommerce.juanpenailillo.repl.co/productos/' + id
+      url: 'https://ecommerceplants.fly.dev/productos/' +id
     };
 
     const product = axios.request(options).then(function (response) {
-      return response.data;
+      console.log(response.data[0]);
+      response.data[0]
     }).catch(function (error) {
       console.error(error);
       return error.message
     });
 
     return product;
-    // const product = fetch("https://ecommerce.juanpenailillo.repl.co/productos/"+id)
-    //   .then(res => res.json())
-    //   .then(data => data)
   };
 
   /**
@@ -96,16 +97,22 @@ export default ({children}) => {
 
 
   useEffect(() => {
+    const options = {
+      method: 'GET',
+      url: 'https://ecommerceplants.fly.dev/productos'
+    };
 
-    fetch("https://ecommerce.juanpenailillo.repl.co/productos")
-      .then(response => response.json())
-      .then(data => setProducts(data))
+    axios.request(options).then(function (response) {
+      setProducts(response.data) 
+    }).catch(function (error) {
+      console.error(error);
+    });
 
     setToken(
       localStorage.getItem("token") 
         ? localStorage.getItem("token") 
         : "" )
-  
+      
   }, [token])
 
   return (
@@ -119,6 +126,7 @@ export default ({children}) => {
         info,
         decreaseCartQuantity,
         increaseCartQuantity,
+        cartItems,
         totalCart
         }}>
       {children}

@@ -3,24 +3,41 @@ import { Button, Form, Card } from "react-bootstrap";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useAppContext } from "../context/AppCtx";
+import withReactContent from "sweetalert2-react-content"
+import Swal from "sweetalert2";
+
 
 export default () => {
+  const MyModal = withReactContent(Swal);
+  
+  const showMessage = (status) => {
+    MyModal.fire({
+      title: "Exitoso",
+      icon: "success",
+      timer: 2000,
+      timerProgressBar: true,
+      showCloseButton:false,
+      showConfirmButton:false
+
+    })
+  }
+
   const navigate = useNavigate();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const {setToken, token} = useAppContext();
+  const {setToken } = useAppContext();
+
+
 
   const sendForm = (ev) => {
-    // CREDIENCIALES:
-    //   prueba@admin.com"
-    //   123456
     ev.preventDefault();
+    showMessage();
 
-    
     const options = {
       method: "POST",
-      url: "https://ecommerce.juanpenailillo.repl.co/login",
+      url: "https://ecommerceplants.fly.dev/login",
       data: {
         email,
         password
@@ -32,7 +49,6 @@ export default () => {
       .then(function (res) {
         localStorage.setItem("token", JSON.stringify(res.data));
         setToken(localStorage.getItem("token"));
-        console.log("mi token es " + token);
         navigate("/");
       })
       .catch(function (error) {
@@ -57,7 +73,7 @@ export default () => {
         </h3>
       </Card.Header>
       <Card.Body>
-        <Form id="form-login" onSubmit={sendForm} className="w-100">
+        <Form id="form-login" onSubmit={sendForm} className="w-100" autoComplete="off">
           <Form.Group className="mb-3">
             <Form.Control
               name="email"
