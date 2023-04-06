@@ -16,10 +16,8 @@ export default ({id, name, desc, img, price}) => {
     onClick={() => {
       navigate("details/"+id)
     }}>
-      <Card.Header>
         <Card.Img src={img} className="card-img-fluid"
         style={{objectFit: 'cover', height:'220px'}}/>
-      </Card.Header>
       <Card.Body>
         <h3 className="card-title">{name}</h3>
         <p className='card-text'>{desc}</p> 

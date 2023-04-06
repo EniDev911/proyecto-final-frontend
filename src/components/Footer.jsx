@@ -1,7 +1,7 @@
 export default () => {
   return (
     <footer>
-      @gardenshop. Todos los derechos reservados
+      <strong>@gardenshop</strong>. Todos los derechos reservados
     </footer>
   )
 }

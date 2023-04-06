@@ -6,9 +6,18 @@ import AppCtx from './context/AppCtx';
 import Footer from './components/Footer';
 import Signup from './pages/Signup';
 import Details from './pages/Details';
+import { useEffect } from 'react';
+
+import {getProduct} from "./api/ecommerceApi"
 
 function App() {
 
+  useEffect(() => {
+  const fetchProduct = async() => {
+      return await getProduct();
+  }
+    console.log(fetchProduct().then())
+  },[])
   return (
 
     <div className="App">

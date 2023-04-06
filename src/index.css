@@ -17,3 +17,15 @@ footer {
   padding: 1rem 0;
   background-color: var(--secondary-color);
 }
+
+.active {
+  font-weight: bolder;
+  color: var(--white) !important;
+  text-shadow: 2px 2px 5px #40513B;
+  font-size: 1.1rem;
+}
+
+.noactive{
+  font-weight: normal;
+  color: var(--primary-color);
+}

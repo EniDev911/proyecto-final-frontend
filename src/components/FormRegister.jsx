@@ -6,6 +6,10 @@ import {useNavigate} from "react-router-dom"
 
 export default () => {
 
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
   const navigate = useNavigate();
   const handleSubmit = (ev) => {
     ev.preventDefault();
@@ -51,15 +55,16 @@ export default () => {
         </h3>
       </Card.Header>
       <Card.Body>
-        <Form id="form-login" onSubmit={handleSubmit} className="w-100">
+        <Form id="form-login" onSubmit={handleSubmit} className="w-100" autoComplete="off">
           <Form.Group className="mb-3">
           </Form.Group>
           <Form.Group className="mb-3">
             <Form.Control
               name="email"
               type="email"
+              onChange={(ev)=> setEmail(ev.target.value)}
+              value={email}
               placeholder="Correo electrónico"
-              autoComplete="off"
               required
             />
           </Form.Group>
@@ -68,6 +73,8 @@ export default () => {
               name="password"
               type="password"
               placeholder="Contraseña"
+              onChange={(ev)=> setPassword(ev.target.value)}
+              value={password}
               required
             />
           </Form.Group>

@@ -9,7 +9,7 @@ export default () => {
 
   return (
     <Container>
-    <Row className="my-5">
+    <Row className="my-5 py-5">
       {
         products.map((p) => {
           return (
