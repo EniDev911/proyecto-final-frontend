@@ -1,9 +1,11 @@
 import React from 'react'
 import {Container, Nav, Navbar} from 'react-bootstrap'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useAppContext } from '../context/AppCtx';
 
 export default () => {
+
+
 
   const {token, setToken} = useAppContext();
   return (
@@ -14,11 +16,11 @@ export default () => {
             <Nav className="ms-auto">
               <Nav.Link as={Link} to="/">Home</Nav.Link>
               {
-                token != ""
-
-                ? <>
+                token ? <>
                 <Nav.Link as={Link} to="/" onClick={
-                  setToken("")
+                  () => {
+                    setToken(localStorage.removeItem("token"));
+                  }
                 }>Salir</Nav.Link>
                 </>
                 : <>

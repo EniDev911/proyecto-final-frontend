@@ -5,6 +5,7 @@ import Login from './pages/Signin';
 import AppCtx from './context/AppCtx';
 import Footer from './components/Footer';
 import Signup from './pages/Signup';
+import Details from './pages/Details';
 
 function App() {
 
@@ -17,6 +18,7 @@ function App() {
           <Route path="/" element={<Home />} index/>
           <Route path="/login" element={<Login />} index/>
           <Route path="/signup" element={<Signup />} />
+          <Route path="/details/:id" element={<Details />} />
         </Routes>
         <Footer />
       </AppCtx>

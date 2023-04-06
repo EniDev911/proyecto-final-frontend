@@ -5,20 +5,21 @@ import { useAppContext } from '../context/AppCtx'
 
 export default () => {
 
-  const {dummyProducts} = useAppContext();
+  const {products} = useAppContext();
 
   return (
     <Container>
     <Row className="my-5">
       {
-        dummyProducts.map((p) => {
+        products.map((p) => {
           return (
-        <Col key={p.product_name} xs={10} md={6} lg={4} xl={3} xxl={2} className="mx-auto">
+        <Col key={p.titulo} xs={10} md={6} lg={4} xl={3} xxl={2} className="mx-auto">
             <Card 
-                name={p.product_name}
-                desc={p.product_desc}
-                img={p.product_img}
-                price={p.product_price} />
+                id={p.id}
+                name={p.titulo}
+                desc={p.descripcion}
+                img={p.imagen1}
+                price={p.precio} />
         </Col>
           )
         })

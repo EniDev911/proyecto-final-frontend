@@ -1,36 +1,39 @@
 import { Fragment, useState } from "react";
 import { Button, Form, Card } from "react-bootstrap";
 import axios from "axios";
+import {useNavigate} from "react-router-dom"
 
 
 export default () => {
 
-  const handleSubmit = () => {
+  const navigate = useNavigate();
+  const handleSubmit = (ev) => {
     ev.preventDefault();
-
-    const [password, setPassword] = useState();
 
     const form = document.getElementById("form-login");
 
     const options = {
       method: "POST",
-      url: "https://ecommerce.juanpenailillo.repl.co/login",
+      url: "https://ecommerce.juanpenailillo.repl.co/usuarios",
       data: {
         email: form.email.value,
         password: form.password.value,
       },
     };
 
-    axios
+    if (form.password.value === form.password2.value) {
+      axios
       .request(options)
       .then(function (res) {
-        let token = localStorage.getItem("token")
-          ? localStorage.getItem("token")
-          : localStorage.setItem("token", JSON.stringify(res.data));
+        console.log(res.data);
+        navigate("/")
       })
       .catch(function (error) {
         console.error(error);
-      });
+      })
+    } else {
+      alert("Contraseña no coinciden")
+    }
   };
 
 
@@ -50,18 +53,13 @@ export default () => {
       <Card.Body>
         <Form id="form-login" onSubmit={handleSubmit} className="w-100">
           <Form.Group className="mb-3">
-            <Form.Control
-              name="email"
-              type="email"
-              placeholder="Nombre completo"
-              required
-            />
           </Form.Group>
           <Form.Group className="mb-3">
             <Form.Control
               name="email"
               type="email"
               placeholder="Correo electrónico"
+              autoComplete="off"
               required
             />
           </Form.Group>
@@ -82,7 +80,7 @@ export default () => {
             />
           </Form.Group>
           <Form.Group className="mb-3" controlId="formBasicCheckbox">
-            <Form.Check type="checkbox" label="Check me out" />
+            <Form.Check type="checkbox" name="condicion" label="Acepto terminos y condiciones" />
           </Form.Group>
           <Button type="submit" variant="success">
             Registrarse

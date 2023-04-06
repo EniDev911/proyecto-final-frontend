@@ -1,9 +1,21 @@
 import React from 'react'
 import {Card} from 'react-bootstrap'
+import { useNavigate } from 'react-router-dom';
+import { useAppContext } from '../context/AppCtx'
 
-export default ({name, desc, img, price}) => {
+
+
+export default ({id, name, desc, img, price}) => {
+
+  const {increaseCartQuantity} = useAppContext();
+
+  const navigate = useNavigate();
   return (
-    <Card style={{ borderRadius: '15px'}} className="shadow-sm">
+    <Card style={{ borderRadius: '15px'}} className="shadow-sm" 
+    
+    onClick={() => {
+      navigate("details/"+id)
+    }}>
       <Card.Header>
         <Card.Img src={img} className="card-img-fluid"
         style={{objectFit: 'cover', height:'220px'}}/>
@@ -14,7 +26,7 @@ export default ({name, desc, img, price}) => {
       </Card.Body>
       <Card.Footer style={{position: 'relative'}} className="bg-body d-flex justify-content-between align-items-center">
         <div><strong>$ {price}</strong></div>
-        <div style ={{
+        <button style ={{
           position: 'absolute',
           right: '0',
           bottom: '0',
@@ -22,9 +34,10 @@ export default ({name, desc, img, price}) => {
           background: '#9DC08B',
           borderRadius: '15px 0px',
           transform: 'rotate(-0.27deg)'
-        }}>
+        }}
+        >
           Añadir al carrito
-        </div>
+        </button>
       </Card.Footer>
     </Card>
   )
